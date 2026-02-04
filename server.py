@@ -102,6 +102,7 @@ def hello_world(some_id: int):
 
 user_view = UserView.as_view("users")
 app.add_url_rule("/hello/world/<int:some_id>", view_func=hello_world, methods=["POST"])
+
 app.add_url_rule(
     "/users/<int:user_id>", view_func=user_view, methods=["GET", "PATCH", "DELETE"]
 )

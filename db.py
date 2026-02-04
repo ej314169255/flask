@@ -22,6 +22,25 @@ class Base(DeclarativeBase):
     def id_dict(self):
         return {"id": self.id}
 
+class Adv(Base):
+    __tablename__= "records"
+
+    id: MappedColumn[int] = mapped_column(Integer, primary_key=True)
+    owner: MappedColumn[str] = mapped_column(String)
+    title: MappedColumn[str] = mapped_column(String)
+    descr: MappedColumn[str] = mapped_column(String, unique=True)
+    status: MappedColumn[str] = mapped_column(String[25])
+    create_time: MappedColumn[datetime.datetime] = mapped_column(
+        DateTime, server_default=func.now()
+        )
+
+    def dict(self):
+        return {
+            "id": self.id,
+            "descr": self.descr,
+            "create_time": int(self.registration_time.timestamp()),
+        }
+
 
 class User(Base):
     __tablename__ = "users"

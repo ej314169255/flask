@@ -16,21 +16,21 @@ import requests
 # print(response.json())
 
 
-response = requests.patch("http://127.0.0.1:5000/records/17", json={
-    "title": "A pair of shoes now", "descr": "honey little jamping dont forgetssssss"
-})
-print(response.status_code)
-print(response.json())
-
-# response = requests.get("http://127.0.0.1:5000/records/5",)
+# response = requests.patch("http://127.0.0.1:5000/records/18", json={
+#     "title": "A pair of shoes now", "descr": "Minimal length of description is 16", "owner": "Smart"
+# })
 # print(response.status_code)
 # print(response.json())
 
-# response = requests.delete("http://127.0.0.1:5000/records/17",
-# # json={"message": "deleted"}
-# )
+# response = requests.get("http://127.0.0.1:5000/records/18",)
 # print(response.status_code)
-# #print(response.json)
+# print(response.json())
+
+response = requests.delete("http://127.0.0.1:5000/records/2",
+json={"message": "deleted"}
+)
+print(response.status_code)
+print(response.json)
 
 # response = requests.get("http://127.0.0.1:5000/users/2",)
 # print(response.status_code)

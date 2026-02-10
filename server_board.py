@@ -34,23 +34,24 @@ class AdvView(MethodView):
             result = jsonify(record.dict() | {"message": "record created successfully"})
             result.status_code = 201
             return result
+        pass
 
 
     def patch(self, record_id: int):
+
         json_data = validate(AdvUpdate, request.json)
 
         with Session() as session:
             record = session.get(Adv, record_id)
-            # if record is None:
-            #     return HttpError(404, "Record not found")
-        #     if "title" in json_data:
-        #         record.title = json_data["title"]
-        #     if "descr" in json_data:
-        #         record.descr = json_data["descr"]
+            if record is None:
+                raise HttpError(404, "Record not found")
+
+            record.owner = json_data["owner"]
+            record.title = json_data["title"]
+            record.descr = json_data["descr"]
 
             session.add(record)
             session.commit()
-            print(record)
             result = jsonify(record.id_dict() | {"message": "record edited successfully"})
             result.status_code = 200
             return result

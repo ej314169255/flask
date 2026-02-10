@@ -27,7 +27,7 @@ class AdvUpdate(AdvBase):
 
     title: str
     descr: str
-    owner: str | None = None
+    owner: str
 
 
 def validate(schema: type[AdvCreate | AdvUpdate], json_date: dict):

@@ -28,17 +28,18 @@ class Adv(Base):
     id: MappedColumn[int] = mapped_column(Integer, primary_key=True)
     owner: MappedColumn[str] = mapped_column(String)
     title: MappedColumn[str] = mapped_column(String)
-    descr: MappedColumn[str] = mapped_column(String, unique=True)
-    status: MappedColumn[str] = mapped_column(String[25])
-    create_time: MappedColumn[datetime.datetime] = mapped_column(
+    descr: MappedColumn[str] = mapped_column(String)
+    registration_time: MappedColumn[datetime.datetime] = mapped_column(
         DateTime, server_default=func.now()
         )
 
     def dict(self):
         return {
             "id": self.id,
+            "owner": self.owner,
+            "title": self.title,
             "descr": self.descr,
-            "create_time": int(self.registration_time.timestamp()),
+            "registration_time": int(self.registration_time.timestamp()),
         }
 
 

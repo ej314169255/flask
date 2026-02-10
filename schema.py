@@ -3,29 +3,34 @@ import pydantic
 from errors import HttpError
 
 
-class UserBase(pydantic.BaseModel):
-    name: str
-    password: str
+class AdvBase(pydantic.BaseModel):
+    title: str
+    descr: str
+    owner: str
+    
 
-    @pydantic.field_validator("password")
+    @pydantic.field_validator("descr")
     @classmethod
-    def secure_password(cls, v):
-        if len(v) < 8:
-            raise ValueError(f"Minimal length of password is 8")
+    def contain_description(cls, v):
+        if len(v) < 16:
+            raise ValueError(f"Minimal length of description is 16")
         return v
 
 
-class UserCreate(UserBase):
-    pass
+class AdvCreate(AdvBase):
+    title: str
+    descr: str
+    owner: str
 
 
-class UserUpdate(UserBase):
+class AdvUpdate(AdvBase):
 
-    name: str | None = None
-    password: str | None = None
+    title: str
+    descr: str
+    owner: str | None = None
 
 
-def validate(schema: type[UserCreate | UserUpdate], json_date: dict):
+def validate(schema: type[AdvCreate | AdvUpdate], json_date: dict):
     try:
         schema_instance = schema(**json_date)
         return schema_instance.model_dump(exclude_none=True)

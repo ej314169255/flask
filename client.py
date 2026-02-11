@@ -7,30 +7,36 @@ import requests
 # print(response.status_code)
 # print(response.json())
 
+# response = requests.post('http://127.0.0.1:5000/hello/world/42?key1=val1&key2=val2',
+#             json={"some": "data"},
+#             headers={"Authorisation": "token"}
+#         )
+# print(response.status_code)
+# print(response.json())
 
 # response = requests.post(
 #     "http://127.0.0.1:5000/records",
-#     json={"title": "shoes", "descr": "Minimal length of description is 16", "owner": "Jimmy"}
+#     json={"descr": "Minimal length of description is 16", "owner": "Jimmy"}
 # )
 # print(response.status_code)
 # print(response.json())
 
 
-# response = requests.patch("http://127.0.0.1:5000/records/18", json={
-#     "title": "A pair of shoes now", "descr": "Minimal length of description is 16", "owner": "Smart"
-# })
-# print(response.status_code)
-# print(response.json())
-
-# response = requests.get("http://127.0.0.1:5000/records/18",)
-# print(response.status_code)
-# print(response.json())
-
-response = requests.delete("http://127.0.0.1:5000/records/2",
-json={"message": "deleted"}
-)
+response = requests.patch("http://127.0.0.1:5000/records/20", json={"owner": "ex",
+    "title": "A pair", "descr": "vMinimal length of description is 16", 
+})
 print(response.status_code)
-print(response.json)
+print(response.json())
+
+# response = requests.get("http://127.0.0.1:5000/records/20",)
+# print(response.status_code)
+# print(response.json())
+
+# response = requests.delete("http://127.0.0.1:5000/records/10",
+# json={"message": "deleted"}
+# )
+# print(response.status_code)
+# print(response.json)
 
 # response = requests.get("http://127.0.0.1:5000/users/2",)
 # print(response.status_code)

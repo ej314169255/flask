@@ -18,9 +18,9 @@ class AdvBase(pydantic.BaseModel):
 
 
 class AdvCreate(AdvBase):
-    title: str
-    descr: str
-    owner: str
+    title: str | None = "empty"
+    descr: str | None = "empty"
+    owner: str | None = "empty"
 
 
 class AdvUpdate(AdvBase):

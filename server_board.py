@@ -3,6 +3,7 @@ from flask.views import MethodView
 from db import Session, Adv
 from errors import HttpError
 from schema import AdvCreate, AdvUpdate, validate
+from sqlalchemy.exc import IntegrityError
 
 app = Flask("app")
 
@@ -52,7 +53,7 @@ class AdvView(MethodView):
                 raise HttpError(404, "Record not found")
 
             if "owner" in json_data:
-                record.onwer = json_data["owner"]
+                record.owner = json_data["owner"]
             if "title" in json_data:
                 record.title = json_data["title"]
             if "descr" in json_data:

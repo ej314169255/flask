@@ -16,19 +16,20 @@ import requests
 
 # response = requests.post(
 #     "http://127.0.0.1:5000/records",
-#     json={"descr": "Minimal length of description is 16", "owner": "Jimmy"}
+#     json={"descr": "Minimal length of description is 16", "owner": "user_1",
+#     "descr": "book for principal component", "title": "papirus"}
 # )
 # print(response.status_code)
 # print(response.json())
 
 
-response = requests.patch("http://127.0.0.1:5000/records/20", json={"owner": "ex",
-    "title": "A pair", "descr": "vMinimal length of description is 16", 
+response = requests.patch("http://127.0.0.1:5000/records/23", json={"owner": "user_2",
+    "title": "A pair", "descr": "Minimal length of description is 16", 
 })
 print(response.status_code)
 print(response.json())
 
-# response = requests.get("http://127.0.0.1:5000/records/20",)
+# response = requests.get("http://127.0.0.1:5000/records/23",)
 # print(response.status_code)
 # print(response.json())
 
